@@ -202,11 +202,11 @@ p{
       opacity: 1;
     }
   }
-  animation: brick-in 0.25s linear 0 1;
+  animation: memo-in 0.25s linear 0 1;
 }
 
 
-@keyframes brick-in{
+@keyframes memo-in{
   0%{
     transform: translateX(-105%);
   }
@@ -214,7 +214,7 @@ p{
     transform: translateX(0%);
   }
 }
-@keyframes brick-out{
+@keyframes memo-out{
   0%{
     transform: translateX(0%);
   }
@@ -224,8 +224,8 @@ p{
   }
 }
 
-.anime--brick-out{
-  animation: brick-out 0.2s linear 0 1;
+.anime--memo-out{
+  animation: memo-out 0.2s linear 0 1;
   transform: translateX(-105%);
   // transform: translateX(-110%);
   min-height: initial !important;

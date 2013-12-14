@@ -148,9 +148,9 @@ p {
   -webkit-box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2);
   line-height: 1.25;
-  -webkit-animation: brick-in 0.25s linear 0 1;
-  -moz-animation: brick-in 0.25s linear 0 1;
-  animation: brick-in 0.25s linear 0 1;
+  -webkit-animation: memo-in 0.25s linear 0 1;
+  -moz-animation: memo-in 0.25s linear 0 1;
+  animation: memo-in 0.25s linear 0 1;
 }
 
 @media screen and (max-width: 400px) {
@@ -244,7 +244,7 @@ p {
   opacity: 1;
 }
 
-@-webkit-keyframes brick-in {
+@-webkit-keyframes memo-in {
   0% {
     -webkit-transform: translateX(-105%);
     transform: translateX(-105%);
@@ -256,7 +256,7 @@ p {
   }
 }
 
-@-moz-keyframes brick-in {
+@-moz-keyframes memo-in {
   0% {
     -moz-transform: translateX(-105%);
     transform: translateX(-105%);
@@ -268,7 +268,7 @@ p {
   }
 }
 
-@keyframes brick-in {
+@keyframes memo-in {
   0% {
     -webkit-transform: translateX(-105%);
     -moz-transform: translateX(-105%);
@@ -282,7 +282,7 @@ p {
   }
 }
 
-@-webkit-keyframes brick-out {
+@-webkit-keyframes memo-out {
   0% {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);
@@ -294,7 +294,7 @@ p {
   }
 }
 
-@-moz-keyframes brick-out {
+@-moz-keyframes memo-out {
   0% {
     -moz-transform: translateX(0%);
     transform: translateX(0%);
@@ -306,7 +306,7 @@ p {
   }
 }
 
-@keyframes brick-out {
+@keyframes memo-out {
   0% {
     -webkit-transform: translateX(0%);
     -moz-transform: translateX(0%);
@@ -320,10 +320,10 @@ p {
   }
 }
 
-.anime--brick-out {
-  -webkit-animation: brick-out 0.2s linear 0 1;
-  -moz-animation: brick-out 0.2s linear 0 1;
-  animation: brick-out 0.2s linear 0 1;
+.anime--memo-out {
+  -webkit-animation: memo-out 0.2s linear 0 1;
+  -moz-animation: memo-out 0.2s linear 0 1;
+  animation: memo-out 0.2s linear 0 1;
   -webkit-transform: translateX(-105%);
   -moz-transform: translateX(-105%);
   transform: translateX(-105%);

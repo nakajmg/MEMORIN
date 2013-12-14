@@ -1,11 +1,28 @@
 (function(){
 
 var COLOR_COUNT = 18;
+var EVENT_ANIMATION_END = "webkitAnimationEnd";
+var EVENT_USER_BUTTON_ON  = "touchstart mousedown";
+var EVENT_USER_BUTTON_OFF = "touchend mouseup";
+
+var memorin = memorin || {};
+
+memorin.keyframesAnimationHelper = function keyframesAnimationHelper($target, animation_class_mame){
+  var def = $.Deferred();
+
+  $target.one(EVENT_ANIMATION_END, function(){
+    def.resolve();
+  }).addClass(animation_class_mame);
+
+  return def.promise();
+}
 
 var Memo = Backbone.Model.extend({
-  defaults: {
-    color: (( (Math.random() * COLOR_COUNT) +1 )|0 ),
-    category: ["memo"],
+  defaults: function(){
+    return {
+      color: _.random(1, COLOR_COUNT),
+      category: ["memo"]
+    }
   },
   validate: function( attrs ){
     if( _.isEmpty(attrs.content) ){
@@ -25,6 +42,24 @@ var MemoView = Backbone.View.extend({
     this.$el.html(template);
 
     return this;
+  },
+  events: {
+    "click .delete": "removeMemo"
+  },
+  removeMemo: function(){
+      var $memo = this.$el;
+      $memo.find(".delete").remove();
+      memorin.keyframesAnimationHelper($memo, "anime--memo-out").then(function(){
+        console.log("anime ned");
+        $memo.css("padding", "0")
+        .animate({
+          height: 0,
+          opacity: 0
+        },200,function(){
+          $memo.remove();
+        });
+      });
+
   }
 });
 

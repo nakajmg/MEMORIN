@@ -1,0 +1,53 @@
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="/css/memorin.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  </head>
+<body>
+<!--  -->
+
+<section class="memorin">
+  <h1 class="memorin-title">MEMORIN</h1>
+
+  <div class="memorin-wrapper">
+    <div class="memorin-menu">
+      <ul class="memorin-menu__items">
+        <li class="memorin-menu__item"><i class="fa fa-trash-o"></i>
+        <li class="memorin-menu__item"><i class="fa fa-pencil"></i>
+        <li class="memorin-menu__item"><i class="fa fa-plus"></i>
+      </ul>
+    </div>
+    <div class="memorin-editor">
+      <textarea class="memorin__form__textarea" placeholder="Write MEMO" id="js-form-textarea"></textarea>
+      <!-- <input type="text" class="memorin__form__input"> -->
+      <p class='actions'>
+        <a class='memorin-add js-button' id="add">MEMORU</a>
+      </p>
+    </div>
+    <ul class="memorin-items" id="js-memorin">
+        <!-- <li class="brick small color1"><div class="memorin__content">あいうえおあいうえおあいうえおあ<br>いうえおあいうえおあい<br>うえおあいうえおあいうえお</div><a class='delete' ></a> -->
+    </ul>
+  </div>
+
+</section>
+
+<div class="memorin__background-dark"></div>
+<div class="memorin__modal">
+  <h2 class="memorin__modal__header">UWAGAKI</h2>
+  <textarea class="memorin__modal__textarea" id="js-modal-textarea"></textarea>
+  <a class="memorin__modal__update-btn js-button" id="js-modal-btn">UWAGAKI</a>
+</div>
+
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.autosize.min.js"></script>
+<!--
+  <script src="/js/memorin.storage.js"></script>
+-->
+  <script src="/js/memorin.js"></script>
+</body>
+</html>

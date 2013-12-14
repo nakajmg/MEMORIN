@@ -1,0 +1,27 @@
+{
+  "name": "GridToDo",
+  "version": "0.0.0",
+  "description": "Grid ToDo App",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nakajmg/GridToDo.git"
+  },
+  "author": "nakajmg",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "b37fbd770b7ea472801ac6095f3e570cdc03c7a9",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-csso": "~0.5.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-autoprefixer": "~0.4.2"
+  }
+}

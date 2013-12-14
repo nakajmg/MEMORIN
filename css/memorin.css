@@ -94,6 +94,7 @@ p {
 }
 
 .memorin-menu__item {
+  cursor: pointer;
   display: inline-block;
   color: #C5C5C5;
   width: 58px;
@@ -111,6 +112,66 @@ p {
 
 .memorin-editor {
   display: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.memorin-editor .memorin-editor__close {
+  position: absolute;
+  z-index: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  top: 1px;
+  right: 0;
+  color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(66, 66, 66, 0.17);
+}
+
+.anime--show-editor {
+  -webkit-animation: show-editor ease .3s 0;
+  -moz-animation: show-editor ease .3s 0;
+  animation: show-editor ease .3s 0;
+  display: block;
+}
+
+@-webkit-keyframes show-editor {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+
+@-moz-keyframes show-editor {
+  0% {
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  100% {
+    -moz-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes show-editor {
+  0% {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    transform: translateY(0%);
+  }
 }
 
 .memorin-title {

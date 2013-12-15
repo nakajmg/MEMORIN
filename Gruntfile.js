@@ -24,10 +24,11 @@ module.exports = function(grunt){
     },
     autoprefixer: {
       options: {
-      browsers: ['ios >= 5', 'android >= 2.3', 'ff 15']
+      browsers: ['ios >= 5', 'android >= 2.3']
+      // browsers: ['ios >= 5', 'android >= 2.3', 'ff 15']
       },
       dist: {
-      src: './css/memorin.css'
+      src: './css/memorin-v3.css'
       },
     },
     csso: {

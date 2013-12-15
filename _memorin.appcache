@@ -1,0 +1,14 @@
+CACHE MANIFEST
+
+CACHE:
+fonts/fontawesome-webfont.eot
+fonts/fontawesome-webfont.svg
+fonts/fontawesome-webfont.ttf
+fonts/fontawesome-webfont.woff
+fonts/FontAwesome.otf
+js/underscore-min.js
+js/jquery.min.js
+js/backbone-min.js
+js/backbone.localStorage-min.js
+js/backbone.stickit.min.js
+js/jquery.autosize.min.js

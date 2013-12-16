@@ -2,68 +2,66 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="css/memorin-v3.css">
+    <!-- <link rel="stylesheet" href="css/memorin-v3.css"> -->
+    <link rel="stylesheet" href="css/memorin.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
 <script type="text/template" id="template-memo">
   <div class="memo__content color<%- color %>" contenteditable="true"><%= content %></div>
   <div class="memo__backface">
-    <label><input type="checkbox" name="important" class="memo__backface__important" <%= important ? "checked" : "" %>>important</label> <br>
-    <label><input type="checkbox" name="todo" class="memo__backface__todo js-toggle-tag" <%= _.contains(tags,"todo") ? "checked" : "" %>>ToDo</label><br>
-    <label><input type="checkbox" name="other" class="memo__backface__other js-toggle-tag" <%= _.contains(tags,"other") ? "checked" : "" %>>other</label><br>
+    <div class="memo__backface__tags">
+      <label><input type="checkbox" name="todo" class="memo__backface__todo js-toggle-tag" <%= _.contains(tags,"todo") ? "checked" : "" %>><i class="fa fa-github-alt"></i></label>
+      <label><input type="checkbox" name="other" class="memo__backface__other js-toggle-tag" <%= _.contains(tags,"other") ? "checked" : "" %>><i class="fa fa-star"></i></label>
+      <label><input type="checkbox" name="important" class="memo__backface__important" <%= important ? "checked" : "" %>><i class="fa fa-exclamation"></i></label>
+      <span class="memo__remove"><i class="fa fa-trash-o"></i></span>
+    </div>
   </div>
-  <span class="memo__remove">[x]</span>
-  <span class="memo__flip">[F]</span>
+  <div class="memo__options">
+    <span class="memo__flip"><i class="fa fa-info"></i></span>
+  </div>
 </script>
   </head>
 <body>
 <!--  -->
 
 <section id="memorin" class="memorin">
-  <h1 class="memorin-title">MEMORIN</h1>
 
 <div class="memorin-wrapper">
-  <form id="editor">
-    <!-- <textarea name="" id="textarea" cols="30" rows="10"></textarea> -->
-    <div class="memo__editor" contenteditable="true" id="textarea"></div>
-    <div class="memo__editor__tags">
-      <input type="checkbox" id="todo"><label for="todo" class="memo__editor__tag"><i class="fa fa-github-alt"></i></label>
-      <input type="checkbox" id="other"><label for="other" class="memo__editor__tag"><i class="fa fa-star"></i></label>
-      <input type="checkbox" id="important"><label for="important" class="memo__editor__tag"><i class="fa fa-exclamation"></i></label>
-    </div>
-    <button type="submit" style="display:block;" class="memo__editor__submit"><i class="fa fa-arrow-circle-o-down"></i></button>
-  </form>
+  <h1 class="memorin-title">MEMORIN</h1>
+
+
 
   <div id="main">
     <div class="memo__show__btns">
-  <!--     <button id="show-all"><i class="fa fa-clipboard"></i></button>
-      <button value="todo" class="show-tag"><i class="fa fa-github-alt"></i></button>
-      <button value="ohter" class="show-tag"><i class="fa fa-star"></i></button>
-      <button id="show-important"><i class="fa fa-exclamation"></i></button> -->
 
       <input type="radio" name="tags" value="todo" id="show-all" checked><label for="show-all" class="memo__show__btn"><i class="fa fa-clipboard"></i></label>
       <input type="radio" name="tags" value="todo" class="show-tag" id="show-todo"><label for="show-todo" class="memo__show__btn"><i class="fa fa-github-alt"></i></label>
       <input type="radio" name="tags" value="other" class="show-tag" id="show-other"><label for="show-other" class="memo__show__btn"><i class="fa fa-star"></i></label>
       <input type="radio" name="tags" value="todo" id="show-important"><label for="show-important" class="memo__show__btn"><i class="fa fa-exclamation"></i></label>
 
+      <a id="js-toggle-editor" class="memo__show__btn toggle-editor"><i class="fa fa-plus"></i></a>
+
     </div>
+
+    <form id="editor" class="memo__editor__wrapper">
+      <div class="memo__editor" contenteditable="true" id="textarea"></div>
+      <div class="memo__editor__tags">
+        <input type="checkbox" id="todo"><label for="todo" class="memo__editor__tag"><i class="fa fa-github-alt"></i></label>
+        <input type="checkbox" id="other"><label for="other" class="memo__editor__tag"><i class="fa fa-star"></i></label>
+        <input type="checkbox" id="important"><label for="important" class="memo__editor__tag"><i class="fa fa-exclamation"></i></label>
+      </div>
+      <button type="submit" style="display:block;" class="memo__editor__submit  js-button"><i class="fa fa-arrow-circle-o-down"></i></button>
+    </form>
+
     <div id="render" class="memo__render"></div>
   </div>
 </div>
 
 </section>
 
-
-
-
-
-<!--  -->
-  <script type="text/template" id="memorin-item"></script>
   <script src="js/underscore-min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/backbone-min.js"></script>
-  <script src="js/backbone.localStorage-min.js"></script>
-  <script src="js/backbone.stickit.min.js"  ></script>
-  <script src="js/jquery.autosize.min.js"></script>
   <script src="js/memorin-v3.js"></script>
+  <!-- <script src="js/memorin.min.js"></script> -->
 </body>
 </html>

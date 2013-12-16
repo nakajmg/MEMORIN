@@ -46,27 +46,38 @@ p{
   text-align: center;
   margin: 0 auto 10px;
   @media screen and (max-width:$breakpoint__smartphone){
-    font-size: 25px;
+    font-size: 30px;
     padding: 5px 0;
+    margin-bottom: 0;
     line-height: 25px;
-    background-color: rgba(20,20,20,.8);
+    // background-color: rgba(20,20,20,.8);
     text-shadow: -1px -1px rgba(0,0,0,.1);
   }
 }
 
 
-
+.memo__editor__wrapper{
+  display: none;
+}
 
 .memo__editor{
-  border: 1px solid #000;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2);
   width: 140px;
   min-height: 140px;
-  background-color: #1abc9c;
+  // background-color: #1abc9c;
   display: inline-block;
   text-align: left;
   padding: 5px;
   box-sizing: border-box;
   vertical-align: top;
+  opacity: 1;
+  // transition: opacity 1s;
+  animation: memo-new 0.3s linear 0 1;
+  @media screen and (max-width:$breakpoint__smartphone){
+    width: 100%;
+    min-height: 50px;
+  }
 }
 .memo__editor__tags{
   display: inline-block;
@@ -82,6 +93,13 @@ p{
       box-shadow: 1px 1px 0 0 rgba(0,0,0,.3);
       text-shadow: -1px -1px 0 rgba(0,0,0,.4);
     }
+  }
+  @media screen and (max-width:$breakpoint__smartphone){
+    // width: 100%;
+    display: block;
+    margin: 10px auto;
+    padding:0;
+    text-align: center;
   }
 }
 .memo__editor__tags .fa{
@@ -108,10 +126,11 @@ p{
   box-sizing: border-box;
   border-radius: 20px;
   @media screen and (max-width:$breakpoint__smartphone){
-    // width: 100%;
+    display: inline-block;
+    margin: 0 3px;
   }
 }
-.memo__editor__submit{
+.memo__editor__submit, .toggle-editor{
   display: inline-block;
   text-align: center;
   margin: 5px auto;
@@ -132,7 +151,13 @@ p{
     // width: 100%;
   }
   -webkit-appearance: none;
+  outline: none;
 }
+
+
+
+$memo__show__btn--normal: 60px;
+$memo__show__btn--small: 40px;
 .memo__show__btn{
   box-shadow: inset -1px -1px 0 0 rgba(0, 0, 0, 0.2);
   color: rgba(170, 170, 170, 0.14);
@@ -143,19 +168,24 @@ p{
   border: 1px solid rgba(0,0,0,.1);
   background-color: rgba(30,30,30,.3);
   margin: 5px;
-  line-height: 60px;
-  width: 60px;
-  height: 60px;
+  line-height: $memo__show__btn--normal;
+  width: $memo__show__btn--normal;
+  height: $memo__show__btn--normal;
   font-size: 45px;
   text-decoration: none;
   box-sizing: border-box;
   border-radius: 4px;
   @media screen and (max-width:$breakpoint__smartphone){
-    // width: 100%;
+    line-height: $memo__show__btn--small;
+    width: $memo__show__btn--small;
+    height: $memo__show__btn--small;
+    font-size: 25px;
+    margin: 3px;
   }
 }
 
 .memo__show__btns{
+  margin: 6px auto;
   .fa{
     line-height: inherit;
   }
@@ -165,20 +195,38 @@ p{
       color: #e67e22;
       box-shadow: inset 1px 1px 0 0 rgba(0,0,0,.3);
       text-shadow: -1px -1px 0 rgba(0,0,0,.4);
-      // background-color: #16A085;
     }
   }
 }
 
+.toggle-editor{
+  transition: transform .5s linear 0;
+  transform: translateX(0) rotate(0deg);
+
+  border-radius: 50%;
+  color: #aaa;
+  .fa{
+    line-height: inherit;
+  }
+}
+.anime-plus-btn{
+  transform: rotate(-225deg);
+}
+@keyframes plus-btn{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-225deg);
+  }
+}
 
 // .memo__render{
 .memo-list{
-  // width: 632px;
   width: 100%;
   @media screen and (max-width:$breakpoint__smartphone){
       width: 310px;
   }
-  // min-height: 161px;
   box-sizing: border-box;
   border-radius: 3px;
   padding: 3px 6px;
@@ -209,62 +257,16 @@ p{
   line-height: 1.25;
   word-break: break-all;
   @media screen and (max-width:$breakpoint__smartphone){
-    width: 95% !important;
+    // width: 280px !important;
+    width: 100% !important;
     height: auto;
     margin: 5px auto;
     margin-left: 0;
     min-height: inherit;
     vertical-align: top;
-    box-shadow: 5px 2px 1px 0 rgba(0,0,0,.2);
+    // box-shadow: 5px 2px 1px 0 rgba(0,0,0,.2);
   }
 
-  .memo_remove {
-      font-size: 20px !important;
-      display: block;
-      color: rgba(255,255,255,.6);
-      background: rgba(255, 255, 255, 0.1);
-      width: 40px;
-      height: 40px;
-      top: 0;
-      right: 0;
-      position: absolute;
-      text-align: center;
-      line-height: 40px;
-      text-shadow: -1px -1px 0 rgba(0,0,0,.2);
-      opacity: 0;
-      transition: opacity 0.2s linear 0;
-
-      &:before{
-        // content: "\00d7";
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        font-smoothing: antialiased;
-        osx-font-smoothing: grayscale;
-        content: "\f014";
-        font-size: 15px;
-        position: absolute;
-        bottom: 0;
-        @media screen and (max-width:$breakpoint__smartphone){
-          bottom: 5px;
-        }
-        left: 0;
-        right: 0;
-      }
-
-      @media screen and (max-width:$breakpoint__smartphone){
-        height: 100%;
-        width: 22px;
-        left: 98%;
-        opacity: 1;
-        text-align: center;
-        background-color: inherit;
-        background-color: #222;
-        line-height: initial;
-        box-sizing: border-box;
-        color: rgba(255,255,255,.3);
-      }
-  }
   &:hover{
     .memo__remove{
       // visibility: visible;
@@ -275,66 +277,224 @@ p{
   width: 140px;
   min-height: 140px;
 }
-
-
-
-// .memo{
-//   width: 140px;
-//   min-height: 140px;
-//   box-sizing: border-box;
-//   margin: 5px;
-//   display: inline-block;
-//   vertical-align: top;
-//   cursor: pointer;
-//   position: relative;
-// }
-
-.flip .memo__content{
-  transform: rotateY(180deg);
+@keyframes memo-in{
+  0%{
+    transform: translateX(-105%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
 }
-.flip .memo__backface{
-  transform: rotateY(0deg);
+
+@keyframes memo-add{
+  0%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(150%);
+    opacity: 0;
+  }
+}
+.anime-memo-add{
+  animation: memo-add .4s linear 0 1;
+  opacity: 0;
+}
+@keyframes memo-new{
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+@keyframes memo-remove{
+  0%{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+.anime-memo-remove{
+  animation: memo-remove .3s linear 0 1;
+  transform: translateX(-110%);
+  opacity: 0;
+}
+
+
+
+.flip{
+  transform: rotaeY(-180deg);
+}
+.flip{
+  .memo__content{
+    transform: rotateY(-180deg);
+  }
+  .memo__backface{
+    transform: rotateY(0deg);
+  }
+  .memo__flip{
+    transform: rotateY(-180deg);
+  }
 }
 .memo__content{
-  /*display: inline-block;*/
   width: 100%;
   box-sizing: border-box;
   background-color: #9b59b6;
   min-height: inherit;
   line-height: 1;
   padding:5px;
-  /*position: relative;*/
   backface-visibility: hidden;
   transition: transform 1s;
   box-shadow: 2px 2px 0px 0 rgba(0,0,0,.2);
+  @media screen and (max-width:$breakpoint__smartphone){
+    min-height: 42px;
+    padding-right: 10px;
+  }
 }
 .memo__backface{
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: red;
-  /*z-index: 1;*/
+  background-color: rgba(0,0,0,.3);
+  color: #aaa;
   top:0;
   left:0;
   transform: rotateY(180deg);
   backface-visibility: hidden;
   transition: transform 1s;
+
+
 }
-.memo__remove{
+
+$backface__tags--size: 35px;
+.memo__backface__tags{
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin: auto;
+  height: $backface__tags--size;
+
+  display: block;
+  text-align: center;
+  input[type=checkbox]{
+    display: none;
+    &+i{
+      box-shadow: inset 1px 1px 0 0 rgba(0, 0, 0, 0.2);
+      color: rgba(170, 170, 170, 0.14);
+      text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      border: 1px solid rgba(0,0,0,.1);
+      background-color: rgba(30,30,30,.3);
+      line-height: $backface__tags--size;
+      width: $backface__tags--size;
+      height: $backface__tags--size;
+      font-size: 25px;
+      text-decoration: none;
+      box-sizing: border-box;
+      border-radius: 20px;
+      margin: 0 2px;
+      @media screen and (max-width:$breakpoint__smartphone){
+      }
+    }
+    &:checked+i{
+      color: #aaa;
+      box-shadow: 1px 1px 0 0 rgba(0,0,0,.3);
+      text-shadow: -1px -1px 0 rgba(0,0,0,.4);
+    }
+  }
+}
+.memo:hover{
+  .memo__options{
+    opacity: 1;
+  }
+}
+.memo__options{
+  opacity: 0;
   position: absolute;
   right:0;
   top:0;
-  color: rgba(0,0,0,.3);
-  z-index: 3;
-  background-color: rgba(255,255,255,.2);
+  height: 100%;
+  // background-color: rgba(33,33,33,1);
+  width: 30px;
+  text-align: center;
+  transition: opacity .3s linear 0;
+  @media screen and (max-width:$breakpoint__smartphone){
+    opacity: 1;
+  }
 }
+
+.memo__remove{
+  color: #aaa;
+  box-shadow: 1px 1px 0 0 rgba(0,0,0,.3);
+  text-shadow: -1px -1px 0 rgba(0,0,0,.4);
+  display: inline-block;
+  text-align: center;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,.1);
+  background-color: rgba(30,30,30,.3);
+  line-height: $backface__tags--size;
+  width: $backface__tags--size;
+  height: $backface__tags--size;
+  font-size: 25px;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0 2px;
+  .fa{
+    line-height: inherit;
+  }
+  position: relative;
+  margin-top: 5px;
+  // right: 0;
+  @media screen and (max-width:$breakpoint__smartphone){
+    margin-top: 0;
+  }
+}
+
+
 .memo__flip{
+  color: #E2E2E2;
+  text-shadow: -1px -1px 0 rgba(0,0,0,.2);
+  display: inline-block;
+  text-align: center;
+  padding: 0;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-radius: 20px;
   position: absolute;
-  right:0;
-  top:30px;
-  color: rgba(0,0,0,.3);
-  z-index: 3;
-  background-color: rgba(255,255,255,.2);
+  left: 0;
+  right: 0;
+  top: 5px;
+  transition: transform 1s;
+
+  @media screen and (max-width:$breakpoint__smartphone){
+    margin: auto;
+    font-size: 20px;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .fa{
+    line-height: inherit;
+  }
+}
+
+.button--on{
+  // border-top-color: rgba(0,0,0,.3);
+  box-shadow: inset 2px 2px 0 0 rgba(0,0,0,.5) ,inset 0px 0 0 0 rgba(0,0,0,.5) !important;
 }
 
 

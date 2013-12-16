@@ -63,9 +63,14 @@ var MemoView = Backbone.View.extend({
     console.log("MemoView:changememo");
   },
   destroy: function(){
+    var EVENT_ANIMATION_END = "webkitAnimationEnd";
     // console.log(this.$el);
     // this.model.$
-    this.$el.remove();
+    var $target = this.$el;
+    var self = this;
+    $target.one(EVENT_ANIMATION_END,function(){
+      self.$el.remove();
+    }).addClass("anime-memo-remove");
   },
   onUpdate: function(e){
     if(e.which === 91 || e.which === 93){
@@ -98,6 +103,7 @@ var MemoView = Backbone.View.extend({
     this.model.set("content",this.$el.find(".memo__content").html());
   },
   removeMemo: function(){
+    console.log("削除アニメ開始地点");
     this.model.destroy();
   },
   flipMemo: function(){
@@ -134,7 +140,7 @@ var MemoListView = Backbone.View.extend({
   },
   saveLocalStorage: function(){
     var json = JSON.stringify( this.collection.toJSON());
-    localStorage.setItem("memorin",json);
+    localStorage.setItem(storageKey,json);
     console.log("save:localStorage");
   },
   onAdd: function(memo){
@@ -169,40 +175,48 @@ var MemoListView = Backbone.View.extend({
   }
 })
 
-var memoList = new MemoList(JSON.parse(localStorage.getItem("memorin")));
 
-// var memoList = new MemoList(
-//   [
-//     {
-//       content:"めも1",
-//       tags:["other"]
-//     },
-//     {
-//       content:"めも2",
-//       important: true,
-//       tags:["todo"]
-//     },
-//     {
-//       content:"めも3",
-//       tags:["other","todo",]
-//     },
-//     {
-//       content:"めも4",
-//       important: true
-//     },
-//   ]
-// );
+// localStorageのに内容があるかチェック.重複をさけるため.nowをkeyに足して保存
+if(_.isEmpty(localStorage.getItem("memorin"))){
+  var now = Date.now()+"";
+  localStorage.setItem("memorin",now);
+}
+
+var storageKey = "memorin-"+localStorage.getItem("memorin");
+
+var memoList = new MemoList(JSON.parse(localStorage.getItem(storageKey)));
+
 
 var AppView = Backbone.View.extend({
   el: "#main",
   initialize: function(){
     var self = this;
+    var EVENT_USER_BUTTON_ON  = "touchstart mousedown";
+    var EVENT_USER_BUTTON_OFF = "touchend touchemove mousemove mouseup";
+
     this.$render = this.$el.find("#render");
     this.showAllMemo();
 
     this.$el.find(".show-tag").on("click",function(){
       self.showTagMemo($(this).val());
     });
+
+    $(document).on( EVENT_USER_BUTTON_ON,'.js-button',function(){ $(this).addClass('button--on'); });
+    $(document).on( EVENT_USER_BUTTON_OFF,'.js-button',function(){ $(this).removeClass('button--on'); });
+
+    $("#js-toggle-editor").on("click",function(){
+      var $this = $(this);
+      if($this.hasClass("anime-plus-btn")){
+        $this.removeClass("anime-plus-btn");
+        $("#editor").slideUp(500);
+      }else{
+        $this.addClass("anime-plus-btn");
+        $("#editor").slideDown(500);
+      }
+
+    });
+
+
   },
   events:{
     "click #show-all":"showAllMemo",
@@ -227,8 +241,11 @@ var AppView = Backbone.View.extend({
 
 var AddMemoView = Backbone.View.extend({
   el: "#editor",
+  isCmd: false,
   events: {
-    "submit": "onSubmit"
+    "submit": "onSubmit",
+    "keydown .memo__editor": "onKeydown",
+    "keyup .memo__editor": "onKeyup"
   },
   COLOR_COUNT: 18,
   initialize: function(){
@@ -243,6 +260,7 @@ var AddMemoView = Backbone.View.extend({
     if(_.isEmpty(content)){
       return false;
     }else{
+      var self = this;
       var memo = new Memo;
       var tags = [];
       if($("#todo").prop("checked")){
@@ -253,17 +271,61 @@ var AddMemoView = Backbone.View.extend({
       }
       var important = $("#important").prop("checked");
       memo.set({"content":content, "important": important, "tags": tags, "color": color},{validate:true});
-      this.collection.add(memo);
-      this.resetEditor();
+
+      this.keyframesAnimationHelper($("#textarea"), "anime-memo-add").then(function(){
+        console.log("animation end");
+        $("#textarea").css("visibility","hidden");
+        $("#textarea").removeClass("anime-memo-add");
+
+        resetEditor();
+        setTimeout(function(){
+          $("#textarea").css("visibility","visible");
+          self.collection.add(memo);
+        },100);
+
+      });
+      function resetEditor(){
+        self.resetEditor();
+      }
+    }
+  },
+  onKeydown: function(e){
+    console.log("keydown");
+    if(e.which === 91 || e.which === 93){
+      this.isCmd = true;
+    }
+    if(this.isCmd && e.which === 13){
+      this.isCmd = false;
+      this.onSubmit(e);
+      $(e.target).blur();
+    }
+  },
+  onKeyup: function(e){
+    if(e.which === 91 || e.which === 93){
+      this.isCmd = false;
     }
   },
   resetEditor: function(){
     var color = _.random(1,this.COLOR_COUNT);
     var before_color = $("#textarea").attr("data-color");
+    $("#textarea").attr("data-color",color);
     $("#textarea").html("").removeClass("color"+before_color).addClass("color"+color);
     $("#todo").prop("checked","");
     $("#other").prop("checked","");
     $("#important").prop("checked","");
+  },
+  keyframesAnimationHelper: function($target, animation_class_name, opt_isRemoveClass){
+    var def = $.Deferred();
+    var EVENT_ANIMATION_END = "webkitAnimationEnd";
+
+    $target.one(EVENT_ANIMATION_END, function(){
+      if(opt_isRemoveClass){
+        $target.removeClass(animation_class_name);
+      }
+      def.resolve($target);
+    }).addClass(animation_class_name);
+
+    return def.promise();
   }
 });
 

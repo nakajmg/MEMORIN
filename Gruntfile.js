@@ -34,15 +34,15 @@ module.exports = function(grunt){
     csso: {
       dist: {
         files: {
-          './css/memorin.min.css': ['./css/memorin.css']
+          './css/memorin.min.css': ['./css/memorin-v3.css']
         }
       }
     },
-    // uglify: {
-    //   my_target: {
-    //   files: { 'dest/output.min.js': ['src/input1.js', 'src/input2.js'] }
-    //   }
-    // },
+    uglify: {
+      my_target: {
+      files: { './js/memorin.min.js': ['./js/memorin-v3.js','!./memorin.min.js'] }
+      }
+    },
     watch: {
       sass: {
         files: ['sass/*.scss'],
@@ -72,6 +72,6 @@ module.exports = function(grunt){
   //Default task.
   grunt.registerTask('default',['develop']);
   grunt.registerTask('develop',['connect','watch']);
-  grunt.registerTask('publish',['sass','autoprefixer','csso']);
+  grunt.registerTask('publish',['sass','autoprefixer','csso','uglify']);
 
 };

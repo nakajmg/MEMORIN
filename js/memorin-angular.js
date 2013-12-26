@@ -7,25 +7,30 @@ app.controller("editorCtrl",["$scope","$sanitize","$filter","$sce",
     $scope.items = [
       {"content":"test1<br>1111"},
       {"content":"test2<br>2222"},
-      {"content":"aaa<br>http://test.com"},
+      {"content":"aaa<br>aa<br>aaa"},
       {"content":"test4"}
     ];
 
     // $scope.items = angular.fromJson(localStorage.getItem("items"));
 
 
-    $scope.htmlFilter = function(text){
-      // console.log(text);
-      text = text.replace(/\<br\>/g,"\n");
-      var linky_text = $filter("linky")(text,"_blank");
-      // ここでエスケープされたHTMLタグを戻したい
-      var html = linky_text.replace(/&lt;/g,"<").replace(/&gt;/g, ">").replace(/&#10;/g,"<br>").replace(/&amp;nbsp;/g," ");
+    // $scope.htmlFilter = function(text){
+    //   // console.log(text);
+    //   text = text.replace(/\<br\>/g,"\n");
+    //   var linky_text = $filter("linky")(text,"_blank");
+    //   // ここでエスケープされたHTMLタグを戻したい
+    //   var html = linky_text.replace(/&lt;/g,"<").replace(/&gt;/g, ">").replace(/&#10;/g,"<br>").replace(/&amp;nbsp;/g," ");
 
-      return html;
-    }
+    //   return html;
+    // }
 
     $scope.onSubmit = function(){
-      var item = {"content":$scope.testmodel};
+      var text = $scope.testmodel;
+      text = text.replace(/\<br\>/g,"\n");
+      var linky_text = $filter("linky")(text,"_blank");
+      var html = linky_text.replace(/&lt;/g,"<").replace(/&gt;/g, ">").replace(/&#10;/g,"<br>").replace(/&amp;nbsp;/g," ");
+
+      var item = {"content":html};
       $scope.items.push(item);
       localStorage.setItem("items",angular.toJson($scope.items));
     }

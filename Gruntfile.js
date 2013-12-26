@@ -28,7 +28,8 @@ module.exports = function(grunt){
       // browsers: ['ios >= 5', 'android >= 2.3', 'ff 15']
       },
       dist: {
-      src: './css/memorin-v3.css'
+      // src: './css/memorin-v3.css'
+      src: './css/angular.css'
       },
     },
     csso: {

@@ -1,0 +1,31 @@
+/*doc
+---
+title: heading1
+name: heading1
+category: basics
+---
+
+見出しのベースです。できた！aaaa
+
+```block
+<div class="heading1">
+  <div class="subText">見出しの補足見出しの補足</div>
+  <h2 class="mainText">彼は背後にひそかな足音を聞いた。それはあまり良い意味を</h2>
+</div>
+```
+
+*/
+.heading1 {
+  border: 1px solid #000;
+  padding: 10px;
+}
+.heading1 .subText {
+  font-size: 12px;
+  padding: 0 0 8px;
+  margin: 0;
+}
+.heading1 .mainText {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}

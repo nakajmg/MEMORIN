@@ -3,5 +3,23 @@
   <!-- /sg-gLayout__main --></div>
   
 <!-- /sg-gLayout --></div>
+
+<script>
+(function() {
+  var menuBtn = document.querySelector("[data-toggle-menu]");
+  var layout = document.querySelector("[data-layout]");
+  var menu = document.querySelector("[data-menu]");
+  menuBtn.addEventListener("click", function() {
+    if(menu.style.width === "10px") {
+      menu.style.width = "";
+      layout.style.padding = "";
+    }
+    else {
+      menu.style.width = "10px";
+      layout.style.padding = "0";
+    }
+  });
+})();
+</script>
 </body>
 </html>

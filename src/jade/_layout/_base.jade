@@ -1,0 +1,15 @@
+doctype html
+html
+  block vars
+  head
+    include _partial/_meta
+    include _partial/_link
+    include _partial/_ogp
+    
+  body
+    div(id="#{wrapperId}" class="#{wrapperClass}")
+      include _partial/_header
+      block contents
+      include _partial/_footer
+      include _partial/_js
+    block js

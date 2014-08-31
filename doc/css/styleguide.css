@@ -5,12 +5,12 @@ body {
 }
 
 .sg-gLayout {
-  padding: 0 0 0 300px;
+  padding: 0 0 0 280px;
 }
   .sg-gLayout__side {
     position: fixed;
     width: 280px;
-    padding: 10px 10px 0;
+    padding: 10px 0 0;
     left: 0;
     top: 0;
     bottom: 0;
@@ -22,7 +22,7 @@ body {
     line-height: 1.5;
   }
   .sg-gLayout__main {
-    padding: 30px 20px 120px 30px;
+    padding: 10px 10px 120px 10px;
     min-width: 300px;
     overflow: hidden;
   }
@@ -167,7 +167,8 @@ body {
 
 .sg-codeOutput {
   position: relative;
-  padding: 55px 50px 15px;
+  /*padding: 55px 50px 15px;*/
+  padding: 0px;
   background: #f1f0ea;
   border: 1px solid #999;
 }

@@ -40,6 +40,10 @@ src =
     "!assets/js/lib/lib.js"
     "!assets/js/lib/lib.min.js"
   ]
+  jade: [
+    "src/jade/**/*.jade"
+    "!src/jade/_layout/**/*.jade"
+  ]
   stylus: [
     "src/styl/**/*.styl"
     "!src/styl/_module/**/*.styl"
@@ -63,6 +67,13 @@ errorHandler = (error) ->
   notifier.notify({message: error.message, title: error.plugin})
   
 
+gulp.task "jade", ->
+  gulp.src(src.jade)
+    # .pipe $.cached("jade")
+    .pipe plumberWithNotify()
+    .pipe $.jade(pretty: true)
+    .pipe gulp.dest(dest.html)
+
 # Automatically Prefix CSS
 gulp.task "css", ->
   gulp.src(src.css)
@@ -72,7 +83,7 @@ gulp.task "css", ->
 # Compile Any Other Stylus Files You Added (src/styl)
 gulp.task "stylus", ->
   gulp.src(src.stylus)
-    .pipe $.cached("stylus")
+    # .pipe $.cached("stylus")
     .pipe plumberWithNotify()
     .pipe $.stylus()
     .pipe $.autoprefixer(AUTOPREFIXER_BROWSERS)
@@ -127,8 +138,10 @@ gulp.task "default", ->
     notify: false
     host: "localhost"
   # gulp.watch ["src/styl/**/*.styl"], ["stylus", reload]
-  gulp.watch ["src/styl/**/*.styl"], ["optimize:css", reload]
+  # gulp.watch ["src/styl/**/*.styl"], ["optimize:css", reload]
+  gulp.watch ["src/styl/**/*.styl"], ["optimize:css"]
   gulp.watch ["src/coffee/**/*.coffee"], ["coffee", reload]
   gulp.watch ["assets/css/all.css"], ["hologram", reload]
+  gulp.watch ["src/jade/**/*.jade"], ["jade", reload]
   # gulp.watch ["styleguide/*.html"], reload
-  gulp.watch ["./*.html"], reload
+  # gulp.watch ["./*.html"], reload

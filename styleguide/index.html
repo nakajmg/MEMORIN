@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Style Guide: memorin</title>
+<link rel="stylesheet" href="../doc/css/styleguide.css">
+<link rel="stylesheet" href="../assets/css/all.min.css">
+</head>
+<body>
+<div class="sg-gLayout m-app" data-layout>
+  <div class="sg-gLayout__side" data-menu>
+    
+    <div class="sg-siteTitleH" data-toggle-menu>Style Guide</div>
+    
+    <ul class="sg-sideList">
+       
+        <li><a href="#m-header">m-header</a></li>
+       
+        <li><a href="#m-memos">m-memos</a></li>
+      
+    </ul>
+    
+  <!-- /sg-gLayout__side --></div>
+  
+  <div class="sg-gLayout__main">
+  
+    <div class="sg-pageTitleH">memorin</div>
+    <div class="sg-blockExpContainer">
+<h1 id="m-header">m-header</h1>
+<div class="sg-codeExpContanier">
+  <div class="sg-codeOutput">
+    <div class="sg-codeOutput__blockPlacer">
+      <header class="m-header">
+<div class="m-header__title">
+  MEMORIN
+</div>
+</header>
+
+    </div>
+  </div>
+  <div class="sg-codeBlock"><pre><code class="highlight"><span style="color: #000080">&lt;header</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-header"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-header__title"</span><span style="color: #000080">&gt;</span>
+  MEMORIN
+<span style="color: #000080">&lt;/div&gt;</span>
+<span style="color: #000080">&lt;/header&gt;</span>
+</code></pre>
+</div>
+
+</div>
+
+<h1 id="m-memos">m-memos</h1>
+<div class="sg-codeExpContanier">
+  <div class="sg-codeOutput">
+    <div class="sg-codeOutput__blockPlacer">
+      <div class="m-memos">
+<ul class="m-memos__list">
+  <li class="m-memos__item  color1">メモメモメモ
+  <li class="m-memos__item  color2">メモメモメモ
+  <li class="m-memos__item  color3">メモメモメモ
+</ul>
+</div>
+
+    </div>
+  </div>
+  <div class="sg-codeBlock"><pre><code class="highlight"><span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-memos"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;ul</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-memos__list"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;li</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-memos__item  color1"</span><span style="color: #000080">&gt;</span>メモメモメモ
+  <span style="color: #000080">&lt;li</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-memos__item  color2"</span><span style="color: #000080">&gt;</span>メモメモメモ
+  <span style="color: #000080">&lt;li</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-memos__item  color3"</span><span style="color: #000080">&gt;</span>メモメモメモ
+<span style="color: #000080">&lt;/ul&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+</div>
+
+    <!-- /sg-blockExpContainer --></div>
+  <!-- /sg-gLayout__main --></div>
+  
+<!-- /sg-gLayout --></div>
+
+<script>
+(function() {
+  var menuBtn = document.querySelector("[data-toggle-menu]");
+  var layout = document.querySelector("[data-layout]");
+  var menu = document.querySelector("[data-menu]");
+  menuBtn.addEventListener("click", function() {
+    if(menu.style.width === "10px") {
+      menu.style.width = "";
+      layout.style.padding = "";
+    }
+    else {
+      menu.style.width = "10px";
+      layout.style.padding = "0";
+    }
+  });
+})();
+</script>
+</body>
+</html>

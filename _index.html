@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/all.css">
+</head>
+<body>
+<div id="m-app" class="m-app">
+  <div class="m-memos">
+    <div v-component="m-memoList" v-with="memos" v-ref="memoList">
+      <div>
+        <div v-repeat="data" v-component="m-memoItem">
+          <div v-model=memo.content contenteditable v-on="keyup: update"></div>
+        </div>
+      </div>
+      <button v-on="click: addItem">add</button>
+      <button v-on="click: removeItem">remove</button>
+    </div>
+    
+  </div>
+</div>
+
+<script src="assets/js/lib/lib.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

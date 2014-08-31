@@ -1,0 +1,7 @@
+section.m-memos
+  div(v-component="m-memoList" v-with="memos" v-ref="memoList")
+    div
+      div(v-repeat="data" v-component="m-memoItem")
+        div(v-model="memo.content" v-on="keyup: update" contenteditable)
+    button(v-on="click: addItem") add
+    button(v-on="click: removeItem") remove

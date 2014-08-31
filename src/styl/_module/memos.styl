@@ -1,0 +1,41 @@
+/*doc
+---
+title: m-memos
+name: m-memos
+category: memorin
+---
+
+
+```block
+<div class="m-memos">
+  <ul class="m-memos__list">
+    <li class="m-memos__item  color1">メモメモメモ
+    <li class="m-memos__item  color2">メモメモメモ
+    <li class="m-memos__item  color3">メモメモメモ
+  </ul>
+</div>
+```
+*/
+
+.m-memos
+  padding: 5px
+  background-color: rgba(0, 0, 0, 0.2)
+  .m-memos__list
+    margin: 0
+    padding: 0
+    .m-memos__item
+      border: 1px solid #95cbb2
+      padding: 5px
+      position: relative
+      margin: 5px
+      display: inline-block
+      vertical-align: bottom
+      box-sizing: border-box
+      line-height: 1.25
+      word-break: break-all
+      width: 140px
+      min-height: 140px
+        [contenteditable]
+          height: 100%
+            &:focus
+              outline: 0px solid transparent

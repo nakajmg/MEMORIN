@@ -50,12 +50,12 @@ class MarkdownRenderer < Redcarpet::Render::HTML
       return <<CODE
 <div class="sg-codeExpContanier">
   <div class="sg-codeOutput">
-    <div class="sg-codeOutput__label">Example</div>
     <div class="sg-codeOutput__blockPlacer">
       #{code}
     </div>
   </div>
-  <div class="sg-codeBlock"><pre><code>#{formatter.format lexer.lex(code)}</code></pre></div>
+  <div class="sg-codeBlock">#{formatter.format lexer.lex(code)}</div>
+
 </div>
 CODE
     end

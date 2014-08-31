@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Style Guide: basics</title>
+<link rel="stylesheet" href="../doc/css/styleguide.css">
+<link rel="stylesheet" href="../assets/css/all.min.css">
+</head>
+<body>
+<div class="sg-gLayout m-app" data-layout>
+  <div class="sg-gLayout__side" data-menu>
+    
+    <div class="sg-siteTitleH" data-toggle-menu>Style Guide</div>
+    
+    <ul class="sg-sideList">
+       
+        <li><a href="#module">module</a></li>
+      
+    </ul>
+    
+  <!-- /sg-gLayout__side --></div>
+  
+  <div class="sg-gLayout__main">
+  
+    <div class="sg-pageTitleH">basics</div>
+    <div class="sg-blockExpContainer">
+<h1 id="module">module</h1>
+<div class="sg-codeExpContanier">
+  <div class="sg-codeOutput">
+    <div class="sg-codeOutput__label">Example</div>
+    <div class="sg-codeOutput__blockPlacer">
+      <div class="m-main">
+<div class="m-main__header">
+  MEMORIN
+</div>
+</div>
+
+    </div>
+  </div>
+  <div class="sg-codeBlock"><pre><code class="highlight"><span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-main"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"m-main__header"</span><span style="color: #000080">&gt;</span>
+  MEMORIN
+<span style="color: #000080">&lt;/div&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+</div>
+
+    <!-- /sg-blockExpContainer --></div>
+  <!-- /sg-gLayout__main --></div>
+  
+<!-- /sg-gLayout --></div>
+
+<script>
+(function() {
+  var menuBtn = document.querySelector("[data-toggle-menu]");
+  var layout = document.querySelector("[data-layout]");
+  var menu = document.querySelector("[data-menu]");
+  menuBtn.addEventListener("click", function() {
+    if(menu.style.width === "10px") {
+      menu.style.width = "";
+      layout.style.padding = "";
+    }
+    else {
+      menu.style.width = "10px";
+      layout.style.padding = "0";
+    }
+  });
+})();
+</script>
+</body>
+</html>

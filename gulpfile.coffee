@@ -61,10 +61,6 @@ plumberWithNotify = ->
 
 errorHandler = (error) ->
   notifier.notify({message: error.message, title: error.plugin})
-
-tscStderr = (message) ->
-  notifier.notify({message: message, title: 'tsc', sound: 'Glass'})
-
   
 
 # Automatically Prefix CSS

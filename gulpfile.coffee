@@ -42,7 +42,7 @@ src =
   ]
   jade: [
     "src/jade/**/*.jade"
-    "!src/jade/_layout/**/*.jade"
+    "!src/jade/_*/**/*.jade"
   ]
   stylus: [
     "src/styl/**/*.styl"

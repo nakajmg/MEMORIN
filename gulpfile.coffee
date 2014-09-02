@@ -85,7 +85,7 @@ gulp.task "stylus", ->
   gulp.src(src.stylus)
     # .pipe $.cached("stylus")
     .pipe plumberWithNotify()
-    .pipe $.stylus()
+    .pipe $.stylus
     .pipe $.autoprefixer(AUTOPREFIXER_BROWSERS)
     .pipe gulp.dest(dest.css)
 
